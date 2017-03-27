@@ -1,1 +1,2 @@
 D:\роб стіл\5 курс\Part 2\Методологія розробки ПЗ\Lab_3\Calculator\Calculator\bin\Debug\Calculator.exe.config
+C:\Users\Oksana\Desktop\Лабка_3\Lab_3_Calculator\Calculator\bin\Debug\Calculator.exe.config
