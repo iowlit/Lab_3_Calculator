@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Collections;
 
 namespace AnalyzerClass
@@ -14,6 +12,7 @@ namespace AnalyzerClass
         public static bool ShowMessage = true;
         public static bool CheckCurrency()
         {
+            if (string.IsNullOrEmpty(Expression)) throw new Exception("Error 05");
             Expression.Replace(" ", string.Empty);
             if (Expression.Length > 30) throw new Exception("Error 08");
 
@@ -101,33 +100,122 @@ namespace AnalyzerClass
         }
         public static string Format()
         {
+            for(int i = 0; i < Expression.Length; i++)
+            {
+                if (i == Expression.Length - 1) break;
+                if ("()+-mp%*/".Contains(Expression[i])) Expression = Expression.Insert(i + 1, " ");
+                if ("0123456789".Contains(Expression[i]))
+                {
+                    if ("0123456789".Contains(Expression[i + 1])) continue;
+                    else Expression = Expression.Insert(i + 1, " ");
+                }
+            }
             return Expression;
         }
         public static ArrayList CreateStack()
         {
             ArrayList Stack = new ArrayList();
+            string[] tokens = Expression.Split(' ');
+
+            Stack<string> tmp = new Stack<string>();
+            int n;
+
+            foreach (string s in tokens)
+            {
+                if (int.TryParse(s.ToString(), out n))
+                {
+                    Stack.Add(s);
+                }
+                if (s == "(")
+                {
+                    tmp.Push(s);
+                }
+                if (s == ")")
+                {
+                    while (tmp.Count != 0 && tmp.Peek() != "(")
+                    {
+                        Stack.Add(tmp.Pop());
+                    }
+                    tmp.Pop();
+                }
+                if ("+-mp*/%".Contains(s))
+                {
+                    while (tmp.Count != 0 && Priority(tmp.Peek()) >= Priority(s))
+                    {
+                        Stack.Add(tmp.Pop());
+                    }
+                    tmp.Push(s);
+                }
+            }
+            while (tmp.Count != 0)
+            {
+                Stack.Add(tmp.Pop());
+            }
 
             return Stack;
         }
         public static string RunEstimate()
         {
-            string[] rpn = Expression.Split(' ');
             ArrayList Stack = CreateStack();
-            int number = 0;
 
-            foreach(string s in rpn)
+            Stack<int> tmp = new Stack<int>();
+            int n;
+
+            foreach(string s in Stack)
             {
-                if (int.TryParse(s, out number))
-                    Stack.Add(s);
+                if (int.TryParse(s, out n))
+                {
+                    tmp.Push(n);
+                }
                 else
                 {
                     switch(s)
                     {
+                        case "*":
+                            {
+                                tmp.Push(tmp.Pop() * tmp.Pop());
+                                break;
+                            }
+                        case "/":
+                            {
+                                n = tmp.Pop();
+                                tmp.Push(tmp.Pop() / n);
+                                break;
+                            }
+                        case "%":
+                            {
+                                n = tmp.Pop();
+                                tmp.Push(tmp.Pop() % n);
+                                break;
+                            }
+                        case "+":
+                            {
+                                tmp.Push(tmp.Pop() + tmp.Pop());
+                                break;
+                            }
+                        case "-":
+                            {
+                                n = tmp.Pop();
+                                tmp.Push(tmp.Pop() - n);
+                                break;
+                            }
+                        case "m":
+                            {
 
+                                break;
+                            }
+                        case "p":
+                            {
+
+                                break;
+                            }
+                        default:
+                            throw new Exception("Error in Calculating");
                     }
                 }
             }
 
+            return tmp.Pop().ToString();
         }
         public static string Estimate()
         {
@@ -135,15 +223,22 @@ namespace AnalyzerClass
             //Format();
             //RunEstimate();
         }
-    }
-
-    public static class ArrayListExtension
-    {
-        public static object Pop(this ArrayList list)
+        public static int Priority(string s)
         {
-            object T = list[list.Capacity];
-            list.RemoveAt(list.Capacity);
-            return T;
+            if (s == "*" || s == "/" || s == "%")
+                return 2;
+            else if (s == "+" || s == "-" || s == "m" || s == "p")
+                return 1;
+            else return 0;            
+        }
+        public static class ArrayListExtension
+        {
+            public static string Pop(this ArrayList list)
+            {
+                object T = list[list.Capacity];
+                list.RemoveAt(list.Capacity);
+                return T;
+            }
         }
     }
 }
