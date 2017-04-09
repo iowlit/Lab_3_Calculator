@@ -1,2 +1,14 @@
 D:\роб стіл\5 курс\Part 2\Методологія розробки ПЗ\Lab_3\Calculator\Calculator\bin\Debug\Calculator.exe.config
-C:\Users\Sergio\OneDrive\Сльози на очах\Liubin\Lab 3\Lab_3_Calculator\Calculator\bin\Debug\Calculator.exe.config
+D:\роб стіл\5 курс\Part 2\Методологія розробки ПЗ\Lab_3\Calculator\Calculator\bin\Debug\Calculator.exe
+D:\роб стіл\5 курс\Part 2\Методологія розробки ПЗ\Lab_3\Calculator\Calculator\bin\Debug\Calculator.pdb
+D:\роб стіл\5 курс\Part 2\Методологія розробки ПЗ\Lab_3\Calculator\Calculator\obj\Debug\Calculator.csprojResolveAssemblyReference.cache
+D:\роб стіл\5 курс\Part 2\Методологія розробки ПЗ\Lab_3\Calculator\Calculator\obj\Debug\MainWindow.g.cs
+D:\роб стіл\5 курс\Part 2\Методологія розробки ПЗ\Lab_3\Calculator\Calculator\obj\Debug\App.g.cs
+D:\роб стіл\5 курс\Part 2\Методологія розробки ПЗ\Lab_3\Calculator\Calculator\obj\Debug\Calculator_MarkupCompile.cache
+D:\роб стіл\5 курс\Part 2\Методологія розробки ПЗ\Lab_3\Calculator\Calculator\obj\Debug\Calculator_MarkupCompile.lref
+D:\роб стіл\5 курс\Part 2\Методологія розробки ПЗ\Lab_3\Calculator\Calculator\obj\Debug\MainWindow.baml
+D:\роб стіл\5 курс\Part 2\Методологія розробки ПЗ\Lab_3\Calculator\Calculator\obj\Debug\Calculator.g.resources
+D:\роб стіл\5 курс\Part 2\Методологія розробки ПЗ\Lab_3\Calculator\Calculator\obj\Debug\Calculator.Properties.Resources.resources
+D:\роб стіл\5 курс\Part 2\Методологія розробки ПЗ\Lab_3\Calculator\Calculator\obj\Debug\Calculator.csproj.GenerateResource.Cache
+D:\роб стіл\5 курс\Part 2\Методологія розробки ПЗ\Lab_3\Calculator\Calculator\obj\Debug\Calculator.exe
+D:\роб стіл\5 курс\Part 2\Методологія розробки ПЗ\Lab_3\Calculator\Calculator\obj\Debug\Calculator.pdb
