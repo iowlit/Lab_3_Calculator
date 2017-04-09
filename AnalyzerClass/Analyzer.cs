@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Collections;
+using CalcClass;
 
 namespace AnalyzerClass
 {
@@ -173,40 +174,40 @@ namespace AnalyzerClass
                     {
                         case "*":
                             {
-                                tmp.Push(tmp.Pop() * tmp.Pop());
+                                tmp.Push(MathFunction.Mult(tmp.Pop(), tmp.Pop()));
                                 break;
                             }
                         case "/":
                             {
                                 n = tmp.Pop();
-                                tmp.Push(tmp.Pop() / n);
+                                tmp.Push(MathFunction.Div(tmp.Pop(), n));
                                 break;
                             }
                         case "%":
                             {
                                 n = tmp.Pop();
-                                tmp.Push(tmp.Pop() % n);
+                                tmp.Push(MathFunction.Mod(tmp.Pop(), n));
                                 break;
                             }
                         case "+":
                             {
-                                tmp.Push(tmp.Pop() + tmp.Pop());
+                                tmp.Push(MathFunction.Add(tmp.Pop(), tmp.Pop()));
                                 break;
                             }
                         case "-":
                             {
                                 n = tmp.Pop();
-                                tmp.Push(tmp.Pop() - n);
+                                tmp.Push(MathFunction.Sub(tmp.Pop(), n));
                                 break;
                             }
                         case "m":
                             {
-
+                                tmp.Push(MathFunction.IABS(tmp.Pop()));
                                 break;
                             }
                         case "p":
                             {
-
+                                tmp.Push(MathFunction.ABS(tmp.Pop()));
                                 break;
                             }
                         default:
@@ -219,9 +220,12 @@ namespace AnalyzerClass
         }
         public static string Estimate()
         {
-            //CheckCurrency();
-            //Format();
-            //RunEstimate();
+            if (CheckCurrency())
+            {
+                Expression = Format();
+                return RunEstimate();
+            }
+            throw new Exception("Error 03");
         }
         public static int Priority(string s)
         {
@@ -231,14 +235,4 @@ namespace AnalyzerClass
                 return 1;
             else return 0;            
         }
-        public static class ArrayListExtension
-        {
-            public static string Pop(this ArrayList list)
-            {
-                object T = list[list.Capacity];
-                list.RemoveAt(list.Capacity);
-                return T;
-            }
-        }
-    }
 }

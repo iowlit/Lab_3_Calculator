@@ -43,6 +43,12 @@
     <Compile Include="Analyzer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CalcClass\CalcClass.csproj">
+      <Project>{e91662f8-6474-4093-a5f2-8cc60a7b18c0}</Project>
+      <Name>CalcClass</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
